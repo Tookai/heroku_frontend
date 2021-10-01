@@ -5,8 +5,6 @@ import { useMutation, useQueryClient } from "react-query";
 import * as api from "../../apiCall";
 import "./Updatepic.scss";
 
-import axios from "axios";
-
 const Updatepic = ({ user }) => {
   //
   //

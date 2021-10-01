@@ -10,7 +10,6 @@ import Cookies from "js-cookie";
 
 function App() {
   const queryClient = new QueryClient();
-  const loggedUser = JSON.parse(localStorage.getItem("user"));
 
   const auth = Cookies.get("user") ? true : false;
 

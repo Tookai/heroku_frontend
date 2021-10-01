@@ -1,8 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const loggedUser = JSON.parse(localStorage.getItem("user"));
-
 const token = Cookies.get("user") ? JSON.parse(Cookies.get("user")).token : "";
 
 const Axios = axios.create({

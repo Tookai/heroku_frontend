@@ -8,8 +8,6 @@ import * as api from "../../apiCall";
 import { categories } from "../../resources.js";
 import gsap from "gsap";
 
-import axios from "axios";
-
 const Addpost = () => {
   //
   // For Modal
