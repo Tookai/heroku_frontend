@@ -1,0 +1,55 @@
+@import "../../../global.scss";
+
+.Users {
+  position: absolute;
+  top: 60vh;
+  right: 4vw;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 105px;
+  transform: scale(0);
+
+  div {
+    background-color: $light;
+    border: 1px solid $darkest;
+    box-shadow: 0px 0px 10px 7px rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+  }
+
+  p {
+    padding-top: 0.3rem;
+    text-align: center;
+    color: $light;
+    font-family: "Indie Flower", cursive;
+  }
+}
+
+.users__modal {
+  height: 90vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 3rem;
+  background-color: $dark;
+  border-radius: 1rem;
+
+  .container {
+    padding: 2rem 0;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+
+    .username {
+      padding: 1rem;
+    }
+  }
+}

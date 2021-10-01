@@ -1,0 +1,50 @@
+@import "../../../global.scss";
+
+.updatepost__modal {
+  background-color: $dark;
+  padding: 3rem;
+  border-radius: 1rem;
+  width: 40vw;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+    text-align: center;
+
+    select,
+    input {
+      padding: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      margin: 0.5rem 0;
+    }
+  }
+
+  .image__preview {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin: auto;
+  }
+
+  .btn__container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .center__btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .delete__btn {
+    padding: 1rem;
+    border: 1px solid $alt-red;
+    border-radius: 0.3rem;
+  }
+}

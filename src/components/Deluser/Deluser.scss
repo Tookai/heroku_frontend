@@ -1,0 +1,39 @@
+@import "../../../global.scss";
+
+.pictures__modal {
+  background-color: $dark;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 40vw;
+  text-align: center;
+  @media (max-width: 799px) {
+    width: 100%;
+  }
+
+  h3 {
+    font-size: 30px;
+    padding-bottom: 1rem;
+  }
+
+  em {
+    color: $alt-red;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+    text-align: center;
+
+    input {
+      padding: 0.3rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .btn__container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
