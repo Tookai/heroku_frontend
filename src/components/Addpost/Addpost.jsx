@@ -97,7 +97,9 @@ const Addpost = () => {
                 <select onChange={(e) => setTopic(e.target.value)}>
                   <option value="">*Choisissez votre topic*</option>
                   {categories.map((c) => (
-                    <option value={c.topic}>{c.topic}</option>
+                    <option value={c.topic} key={c.topic}>
+                      {c.topic}
+                    </option>
                   ))}
                 </select>
               </div>

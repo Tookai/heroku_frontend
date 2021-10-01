@@ -52,7 +52,7 @@ const Topicmodal = () => {
           <div className="container">
             {categories.map((c) => (
               <Link to={`/topic/${c.topic}`} onClick={refreshFeed}>
-                <div className="topic">
+                <div className="topic" key={c.topic}>
                   {c.icon}
                   <h2 className="h2">{c.topic}</h2>
                 </div>

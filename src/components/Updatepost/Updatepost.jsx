@@ -82,7 +82,9 @@ const Updatepost = ({ post }) => {
                 {post.topic}
               </option>
               {categories.map((c) => (
-                <option value={c.topic}>{c.topic}</option>
+                <option value={c.topic} key={c.topic}>
+                  {c.topic}
+                </option>
               ))}
             </select>
 
@@ -96,7 +98,7 @@ const Updatepost = ({ post }) => {
               style={{ backgroundColor: "white", marginBottom: "1rem" }}
               onChange={(e) => setDesc(e.target.value)}
             />
-            {(typeof image === "string" && image !== "") && <img src={image} alt="" className="image__preview" />}
+            {typeof image === "string" && image !== "" && <img src={image} alt="" className="image__preview" />}
             {typeof image === "object" && <img src={URL.createObjectURL(image)} alt="" className="image__preview" />}
 
             <label htmlFor="avatar">Image :</label>
@@ -123,7 +125,9 @@ const Updatepost = ({ post }) => {
               {typeof image === "object" && (
                 <div style={{ display: "flex", justifyContent: "space-evenly", width: "100%" }}>
                   <p>{image.name}</p>
-                  <div style={{ cursor: "pointer" }} onClick={(e) => setImage("")}>X</div>
+                  <div style={{ cursor: "pointer" }} onClick={(e) => setImage("")}>
+                    X
+                  </div>
                 </div>
               )}
             </label>
