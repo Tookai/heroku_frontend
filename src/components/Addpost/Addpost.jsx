@@ -57,7 +57,6 @@ const Addpost = () => {
         console.log(formData.get("file"), "formData");
         const post = formData;
         mutate(post);
-        // axios.post("https://httpbin.org/anything", post).then((res) => console.log(res));
       }
     } else {
       alert("Certains éléments devraient être remplis.");
@@ -70,9 +69,6 @@ const Addpost = () => {
     gsap.fromTo(roundedBtn.current, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.6 });
   }, []);
 
-  console.log(image, "image");
-  console.log(image.name, "image");
-  console.log(typeof image === "object", "typeof");
   return (
     <>
       <div className="Addpost" ref={roundedBtn}>
