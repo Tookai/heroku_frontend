@@ -11,7 +11,9 @@ import Cookies from "js-cookie";
 function App() {
   const queryClient = new QueryClient();
 
-  const auth = Cookies.get("user") ? true : false;
+  // let auth = Cookies.get("user") ? true : false;
+
+  // console.log(auth);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -25,11 +27,19 @@ function App() {
             <LoginPage />
           </Route>
 
-          <Route path="/user/:id">{!auth ? <Redirect to="/login" /> : <UserPage />}</Route>
+          {/* <Route path="/user/:id">{!auth ? <Redirect to="/login" /> : <UserPage />}</Route> */}
+          <Route path="/user/:id">
+            <UserPage />
+          </Route>
 
-          <Route path="/id/:id">{!auth ? <Redirect to="/login" /> : <CommentPage />}</Route>
+          {/* <Route path="/id/:id">{!auth ? <Redirect to="/login" /> : <CommentPage />}</Route> */}
+          <Route path="/id/:id">
+            <CommentPage />
+          </Route>
 
-          <Route path="/">{!auth ? <Redirect to="/login" /> : <HomePage />}</Route>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
         </Switch>
       </Router>
     </QueryClientProvider>

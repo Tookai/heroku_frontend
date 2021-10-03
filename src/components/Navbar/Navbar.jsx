@@ -20,13 +20,6 @@ const Navbar = () => {
   const history = useHistory();
 
   //
-  // clear logged user on close
-  window.onbeforeunload = () => {
-    localStorage.clear();
-    Cookies.remove("user");
-  };
-
-  //
   // Get current user Data
   const loggedUser = JSON.parse(localStorage.getItem("user"));
   const { data, isLoading } = useQuery("logged-user", () => api.selectOneUser(loggedUser.userId));
@@ -61,11 +54,20 @@ const Navbar = () => {
         <h1 className="h1 text">Groupomania</h1>
       </div>
 
-      <div className="modals" onClick={() => setOpen(!open)}>
-        <div ref={roundedBtn}>
-          <IconButton color="primary">{open ? <CloseIcon fontSize="medium" /> : <AddIcon fontSize="medium" />}</IconButton>
+      {data ? (
+        <div className="modals" onClick={() => setOpen(!open)}>
+          <div ref={roundedBtn}>
+            <IconButton color="primary">{open ? <CloseIcon fontSize="medium" /> : <AddIcon fontSize="medium" />}</IconButton>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="modals">
+          <div ref={roundedBtn}>
+            <IconButton color="primary">{open ? <CloseIcon fontSize="medium" /> : <AddIcon fontSize="medium" />}</IconButton>
+          </div>
+        </div>
+      )}
+
       {open && (
         <>
           <Topicmodal />
@@ -82,9 +84,9 @@ const Navbar = () => {
         </div>
       ) : (
         <div className="greeting">
-          <p className="hello">Bonjour, {data[0].firstName}</p>
-          <Link to={`/user/${loggedUser.userId}`} onClick={handleClick}>
-            <Avatar alt={`${data[0].firstName} Avatar`} src={data[0].avatar} />
+          <p className="hello">Bonjour, {data ? data[0].firstName : "toi"}</p>
+          <Link to={`/user/${loggedUser ? loggedUser.userId : "0"}`} onClick={handleClick}>
+            {data ? <Avatar alt={`${data[0].firstName} Avatar`} src={data[0].avatar} /> : <Avatar alt="" src="" />}
           </Link>
         </div>
       )}

@@ -22,7 +22,7 @@ const Logout = () => {
   };
   const handleLogout = () => {
     localStorage.clear();
-    Cookies.remove("token");
+    Cookies.remove("user");
     history.push("/login");
   };
 

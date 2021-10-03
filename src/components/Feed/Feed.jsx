@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useQuery, useQueryClient } from "react-query";
+import { Link } from "react-router-dom";
 import * as api from "../../apiCall";
 import Post from "../Post/Post";
 import "./Feed.scss";
@@ -22,7 +23,19 @@ const Feed = () => {
   }
 
   if (isError) {
-    return <div>There seems to be an error...</div>;
+    return (
+      <div>
+        <h3>Vous n'avez pas l'air de pouvoir voir nos publications...</h3>
+        <h3>Peut être que ça vient de chez nous, dans ce cas, veuillez nous excuser.</h3>
+        <h3>
+          Peut être que vous n'êtes tout simplement pas connecté(e) ? et dans ce cas ça se passe{" "}
+          <Link to="/login">
+            <em>ici</em>
+          </Link>
+          !
+        </h3>
+      </div>
+    );
   }
 
   return (
