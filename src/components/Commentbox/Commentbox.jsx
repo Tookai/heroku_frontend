@@ -18,6 +18,7 @@ const Commentbox = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(["comments", postId]);
       queryClient.invalidateQueries("feed");
+      queryClient.invalidateQueries("commentsNumber");
     },
   });
   //

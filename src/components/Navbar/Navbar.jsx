@@ -61,10 +61,13 @@ const Navbar = () => {
           </div>
         </div>
       ) : (
-        <div className="modals">
-          <div ref={roundedBtn}>
-            <IconButton color="primary">{open ? <CloseIcon fontSize="medium" /> : <AddIcon fontSize="medium" />}</IconButton>
-          </div>
+        <div className="">
+          <Link to="/login">
+            <div /* ref={roundedBtn} */>
+              {/* <IconButton color="primary">{open ? <CloseIcon fontSize="medium" /> : <AddIcon fontSize="medium" />}</IconButton> */}
+              LOGIN
+            </div>
+          </Link>
         </div>
       )}
 

@@ -7,6 +7,7 @@ import "./Feed.scss";
 
 const Feed = () => {
   const pathname = window.location.pathname;
+  console.log(pathname);
   const queryClient = useQueryClient();
   useEffect(() => {
     queryClient.invalidateQueries("feed");
@@ -23,19 +24,21 @@ const Feed = () => {
   }
 
   if (isError) {
-    return (
-      <div>
-        <h3>Vous n'avez pas l'air de pouvoir voir nos publications...</h3>
-        <h3>Peut être que ça vient de chez nous, dans ce cas, veuillez nous excuser.</h3>
-        <h3>
-          Peut être que vous n'êtes tout simplement pas connecté(e) ? et dans ce cas ça se passe{" "}
-          <Link to="/login">
-            <em>ici</em>
-          </Link>
-          !
-        </h3>
-      </div>
-    );
+    window.location.reload();
+
+    // return (
+    //   <div>
+    //     <h3>Vous n'avez pas l'air de pouvoir voir nos publications...</h3>
+    //     <h3>Peut être que ça vient de chez nous, dans ce cas, veuillez nous excuser.</h3>
+    //     <h3>
+    //       Peut être que vous n'êtes tout simplement pas connecté(e) ? et dans ce cas ça se passe{" "}
+    //       <Link to="/login">
+    //         <em>ici</em>
+    //       </Link>
+    //       !
+    //     </h3>
+    //   </div>
+    // );
   }
 
   return (

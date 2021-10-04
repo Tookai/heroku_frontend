@@ -1,12 +1,15 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const token = Cookies.get("user") ? JSON.parse(Cookies.get("user")).token : "";
-
 const Axios = axios.create({
   baseURL: "https://groupomania-social.herokuapp.com/api",
-  headers: { Authorization: `Bearer ${token}` },
+  headers: { Authorization: `Bearer ${Cookies.get("user") ? JSON.parse(Cookies.get("user")).token : ""}` },
 });
+
+// const Axios = axios.create({
+//   baseURL: "http://localhost:5500/api",
+//   headers: { Authorization: `Bearer ${token}` },
+// });
 
 export const createPost = (post) => Axios.post("/post/post", post).then((res) => res.data);
 

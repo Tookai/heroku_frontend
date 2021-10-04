@@ -13,13 +13,14 @@ const Comment = ({ comment }) => {
 
   const loggedUser = JSON.parse(localStorage.getItem("user"));
   const id = comment.id;
-  const { data, isLoading } = useQuery(["post-user", { id }], () => api.selectOneUser(comment.userId));
+  const { data, isLoading, isError } = useQuery(["post-user", { id }], () => api.selectOneUser(comment.userId));
 
   const queryClient = useQueryClient();
   const { mutate } = useMutation(api.deleteComment, {
     onSuccess: () => {
-      queryClient.invalidateQueries(["comments", comment.postId]);
+      queryClient.invalidateQueries("comments");
       queryClient.invalidateQueries("feed");
+      queryClient.invalidateQueries("commentsNumber");
     },
   });
 
@@ -36,16 +37,16 @@ const Comment = ({ comment }) => {
       <div className="infos">
         <div>
           <p>
-            Posté par :{" "}
-            <Link to={`/user/${comment.userId}`}>
-              {isLoading ? (
-                <p>...</p>
-              ) : (
+            Posté par : {isLoading && "..."}
+            {isError && "Utilisateur Supprimé"}
+            {data && (
+              <Link to={`/user/${comment.userId}`}>
                 <em>
+                  {" "}
                   {data[0].firstName} {data[0].lastName}
                 </em>
-              )}
-            </Link>
+              </Link>
+            )}
           </p>
           <p>
             <TimeAgo datetime={`${comment.createdAt}`} locale="fr" />

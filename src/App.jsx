@@ -7,13 +7,14 @@ import UserPage from "./pages/UserPage/UserPage";
 import CommentPage from "./pages/CommentPage/CommentPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Cookies from "js-cookie";
+import { useState } from "react";
 
 function App() {
   const queryClient = new QueryClient();
 
-  // let auth = Cookies.get("user") ? true : false;
+  let user = Cookies.get("user") ? true : false;
 
-  // console.log(auth);
+  // WCAG Vérifier
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -23,21 +24,27 @@ function App() {
             <RegisterPage />
           </Route>
 
+          {/* <Route path="/login">{user ? <Redirect to="/" /> : <LoginPage />}</Route> */}
+
           <Route exact path="/login">
             <LoginPage />
           </Route>
 
-          {/* <Route path="/user/:id">{!auth ? <Redirect to="/login" /> : <UserPage />}</Route> */}
+          {/* <Route path="/user/:id">{user ? <Redirect to="/login" /> : <UserPage />}</Route> */}
+
           <Route path="/user/:id">
             <UserPage />
           </Route>
 
-          {/* <Route path="/id/:id">{!auth ? <Redirect to="/login" /> : <CommentPage />}</Route> */}
+          {/* <Route path="/id/:id">{!user ? <Redirect to="/login" /> : <CommentPage />}</Route> */}
+
           <Route path="/id/:id">
             <CommentPage />
           </Route>
 
-          <Route exact path="/">
+          {/* <Route path="/">{!user ? <Redirect to="/login" /> : <HomePage />}</Route> */}
+
+          <Route path="/">
             <HomePage />
           </Route>
         </Switch>

@@ -11,6 +11,8 @@ import gsap from "gsap";
 import { useQueryClient } from "react-query";
 
 const Topicmodal = () => {
+  // topic modal marche pas sur heroku
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -51,8 +53,8 @@ const Topicmodal = () => {
         <div className="topic__modal">
           <div className="container">
             {categories.map((c) => (
-              <Link to={`/topic/${c.topic}`} onClick={refreshFeed}>
-                <div className="topic" key={c.topic}>
+              <Link key={c.topic} to={`/topic/${c.topic}`} onClick={refreshFeed}>
+                <div className="topic">
                   {c.icon}
                   <h2 className="h2">{c.topic}</h2>
                 </div>

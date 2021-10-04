@@ -68,7 +68,7 @@ const Likes = ({ post }) => {
       )}
 
       <p onClick={handleOpen} className="like__number">
-        ({post.likes})
+        ({data.length})
       </p>
 
       <Modal open={open} onClick={handleClose} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>

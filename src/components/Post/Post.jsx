@@ -13,17 +13,18 @@ const Post = ({ post }) => {
   timeago.register("fr", fr);
   const loggedUser = JSON.parse(localStorage.getItem("user"));
   const id = post.id;
-  const { data, isLoading } = useQuery(["post-user", { id }], () => api.selectOneUser(post.userId));
+  const postId = id;
+  const { data, isLoading, isError } = useQuery(["post-user", { id }], () => api.selectOneUser(post.userId));
+  const { data: com } = useQuery(["commentsNumber", postId], () => api.selectCommentsByPost(postId));
 
   return (
     <div className="Post">
       <div className="top">
         <div className="infos">
           <p>
-            Posté par :{" "}
-            {isLoading ? (
-              <div>...</div>
-            ) : (
+            Posté par : {isLoading && "..."}
+            {isError && "Utilisateur Supprimé"}
+            {data && (
               <Link to={`/user/${post.userId}`}>
                 <em>
                   {" "}
@@ -59,7 +60,7 @@ const Post = ({ post }) => {
               Commenter
             </Button>
           </Link>
-          <p>({post.comments})</p>
+          <p>({com ? com.length : 0})</p>
         </div>
       </div>
     </div>
