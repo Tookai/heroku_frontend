@@ -5,6 +5,7 @@ import { useMutation } from "react-query";
 import { useHistory } from "react-router-dom";
 import * as api from "../../apiCall";
 import "./Deluser.scss";
+import Cookies from "js-cookie";
 
 const Deluser = ({ user }) => {
   const [open, setOpen] = useState(false);
@@ -23,6 +24,7 @@ const Deluser = ({ user }) => {
   const { mutate } = useMutation(api.deleteUser, {
     onSuccess: () => {
       localStorage.clear();
+      Cookies.remove("user");
       history.push("/register");
     },
   });
@@ -64,11 +66,7 @@ const Deluser = ({ user }) => {
                 Confirmer
               </Button>
             ) : (
-              <Button
-                disabled
-                variant="contained"
-                style={{ margin: "0.3rem", backgroundColor: "darkblue", color: "#eeeeee" }}
-              >
+              <Button disabled variant="contained" style={{ margin: "0.3rem", backgroundColor: "darkblue", color: "#eeeeee" }}>
                 J'hésite
               </Button>
             )}
