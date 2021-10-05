@@ -7,7 +7,6 @@ import UserPage from "./pages/UserPage/UserPage";
 import CommentPage from "./pages/CommentPage/CommentPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Cookies from "js-cookie";
-import { useState } from "react";
 
 function App() {
   const queryClient = new QueryClient();
@@ -30,19 +29,19 @@ function App() {
             <LoginPage />
           </Route>
 
-          {/* <Route path="/user/:id">{user ? <Redirect to="/login" /> : <UserPage />}</Route> */}
+          <Route path="/user/:id">{!user ? <Redirect to="/login" /> : <UserPage />}</Route>
 
-          <Route path="/user/:id">
+          {/* <Route path="/user/:id">
             <UserPage />
-          </Route>
+          </Route> */}
 
-          {/* <Route path="/id/:id">{!user ? <Redirect to="/login" /> : <CommentPage />}</Route> */}
+          <Route path="/id/:id">{!user ? <Redirect to="/login" /> : <CommentPage />}</Route>
 
-          <Route path="/id/:id">
+          {/* <Route path="/id/:id">
             <CommentPage />
-          </Route>
+          </Route> */}
 
-          {/* <Route path="/">{!user ? <Redirect to="/login" /> : <HomePage />}</Route> */}
+          {/* <Route path="/">{!isLogged ? <Redirect to="/login" /> : <HomePage />}</Route> */}
 
           <Route path="/">
             <HomePage />

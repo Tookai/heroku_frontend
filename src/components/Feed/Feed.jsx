@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import * as api from "../../apiCall";
 import Post from "../Post/Post";
 import "./Feed.scss";
+import Loader from "react-loader-spinner";
 
 const Feed = () => {
   const pathname = window.location.pathname;
@@ -20,7 +21,11 @@ const Feed = () => {
   });
 
   if (isLoading) {
-    return <div>The data is loading...</div>;
+    return (
+      <div>
+        <Loader type="ThreeDots" color="#fd2d01" height={80} width={100} />
+      </div>
+    );
   }
 
   if (isError) {
