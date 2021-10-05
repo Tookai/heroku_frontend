@@ -48,7 +48,7 @@ const Deluser = ({ user }) => {
           <h3>
             La suppression d'un compte est <em>définitive</em>, une fois supprimé vous ne pourrez plus retrouver votre compte.
           </h3>
-          <p>Si vous êtes sûr de vous écrivez "je veux supprimer" dans la case ci-dessous.</p>
+          <p>Si vous êtes sûr de vous, écrivez "je veux supprimer" dans la case ci-dessous.</p>
           <form>
             <label htmlFor="confirm">Confirmation :</label>
             <input

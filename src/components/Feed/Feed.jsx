@@ -7,7 +7,7 @@ import "./Feed.scss";
 
 const Feed = () => {
   const pathname = window.location.pathname;
-  console.log(pathname);
+
   const queryClient = useQueryClient();
   useEffect(() => {
     queryClient.invalidateQueries("feed");

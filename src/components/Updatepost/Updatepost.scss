@@ -5,6 +5,9 @@
   padding: 3rem;
   border-radius: 1rem;
   width: 40vw;
+  @media (max-width: 799px) {
+    width: 100%;
+  }
 
   form {
     display: flex;

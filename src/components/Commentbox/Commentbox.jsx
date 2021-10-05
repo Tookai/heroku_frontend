@@ -42,8 +42,8 @@ const Commentbox = () => {
 
   return (
     <div className="Commentbox">
-      {data?.map((c) => (
-        <Comment comment={c} />
+      {data?.map((c, id) => (
+        <Comment key={id} comment={c} />
       ))}
       <form>
         <TextField

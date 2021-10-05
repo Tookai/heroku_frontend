@@ -21,6 +21,7 @@ const Addpost = () => {
     setImage("");
     setOpen(false);
   };
+  
   //
   // Get post data
   const [topic, setTopic] = useState("");
