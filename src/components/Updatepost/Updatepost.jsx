@@ -45,20 +45,9 @@ const Updatepost = ({ post }) => {
 
   //
   const handleUpdate = () => {
-    if (typeof image !== "object") {
-      console.log("not file");
-      const content = { desc, image, topic };
-      const body = { id, content };
-      mutate(body);
-    } else {
-      console.log("file");
-      const content = new FormData();
-      content.append("topic", topic);
-      content.append("desc", desc);
-      content.append("image", image);
-      const body = { id, content };
-      mutate(body);
-    }
+    const content = { desc, image, topic };
+    const body = { id, content };
+    mutate(body);
   };
 
   const handleDelete = () => {
@@ -109,28 +98,6 @@ const Updatepost = ({ post }) => {
               placeholder="Mettez l'URL de votre nouvelle photo ici..."
               onChange={(e) => setImage(e.target.value)}
             />
-
-            <label htmlFor="contained-button-file">
-              <input
-                className="upload__input"
-                onChange={(e) => setImage(e.target.files[0])}
-                accept="image/*"
-                id="contained-button-file"
-                multiple
-                type="file"
-              />
-              <Button variant="contained" component="span">
-                Upload
-              </Button>
-              {typeof image === "object" && (
-                <div style={{ display: "flex", justifyContent: "space-evenly", width: "100%" }}>
-                  <p>{image.name}</p>
-                  <div style={{ cursor: "pointer" }} onClick={(e) => setImage("")}>
-                    X
-                  </div>
-                </div>
-              )}
-            </label>
           </form>
 
           <div className="btn__container">

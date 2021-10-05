@@ -44,20 +44,8 @@ const Addpost = () => {
   // Add a post
   const handleSubmit = () => {
     if ((desc !== "" || image !== "") && topic !== "") {
-      if (typeof image === "string") {
         const post = { topic, desc, image, userId };
         mutate(post);
-      }
-      if (typeof image === "object") {
-        const formData = new FormData();
-        formData.append("topic", topic);
-        formData.append("desc", desc);
-        formData.append("image", image);
-        formData.append("userId", userId);
-        console.log(formData.get("file"), "formData");
-        const post = formData;
-        mutate(post);
-      }
     } else {
       alert("Certains éléments devraient être remplis.");
     }
@@ -107,27 +95,6 @@ const Addpost = () => {
                 <p>L'URL de votre image</p>
                 <input type="text" onChange={(e) => setImage(e.target.value)} />
               </div>
-              <label htmlFor="contained-button-file">
-                <input
-                  className="upload__input"
-                  onChange={(e) => setImage(e.target.files[0])}
-                  accept="image/*"
-                  id="contained-button-file"
-                  multiple
-                  type="file"
-                />
-                <Button variant="contained" component="span">
-                  Upload
-                </Button>
-              </label>
-              {typeof image === "object" && (
-                <div style={{ display: "flex", justifyContent: "space-evenly", width: "100%" }}>
-                  <p>{image.name}</p>
-                  <div style={{ cursor: "pointer" }} onClick={(e) => setImage("")}>
-                    X
-                  </div>
-                </div>
-              )}
               <div className="buttons">
                 <Button onClick={handleSubmit} variant="contained" color="primary">
                   Poster
