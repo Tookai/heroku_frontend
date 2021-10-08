@@ -23,11 +23,11 @@ function App() {
             <RegisterPage />
           </Route>
 
-          {/* <Route path="/login">{user ? <Redirect to="/" /> : <LoginPage />}</Route> */}
+          <Route path="/login">{user ? <Redirect to="/" /> : <LoginPage />}</Route>
 
-          <Route exact path="/login">
+          {/* <Route exact path="/login">
             <LoginPage />
-          </Route>
+          </Route> */}
 
           <Route path="/user/:id">{!user ? <Redirect to="/login" /> : <UserPage />}</Route>
 
@@ -41,7 +41,7 @@ function App() {
             <CommentPage />
           </Route> */}
 
-          {/* <Route path="/">{!isLogged ? <Redirect to="/login" /> : <HomePage />}</Route> */}
+          <Route path="/">{!user ? <Redirect to="/login" /> : <HomePage />}</Route>
 
           <Route path="/">
             <HomePage />

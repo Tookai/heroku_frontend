@@ -28,7 +28,7 @@ const Feed = () => {
   }
 
   if (isError) {
-    window.location.reload();
+    return <div>Il y a une erreur, c'est très triste.</div>;
   }
 
   return (

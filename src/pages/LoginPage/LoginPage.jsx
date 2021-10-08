@@ -1,7 +1,7 @@
 import "./LoginPage.scss";
 import stackedLogo from "../../images/stackedLogo.svg";
 import { Button } from "@material-ui/core";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useMutation } from "react-query";
 import * as api from "../../apiCall";
@@ -11,18 +11,20 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const history = useHistory();
+  const [reload, setReload] = useState(false);
 
   const { mutate } = useMutation(api.loginUser, {
     onSuccess: (data) => {
       const user = { userId: data.user[0].id, isAdmin: data.user[0].isAdmin, token: data.token };
       Cookies.set("user", JSON.stringify(user), { expires: 0.125 });
-      history.push("/");
+      setReload(true);
     },
     onError: () => {
       alert("L'identifiant ou le mot de passe est incorrect.");
     },
   });
+
+  reload && window.location.reload();
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -4,14 +4,13 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Avatar from "@material-ui/core/Avatar";
 import Modal from "@material-ui/core/Modal";
 import { useState, useRef, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import gsap from "gsap";
 import { useQuery } from "react-query";
 import * as api from "../../apiCall";
 import Cookies from "js-cookie";
 
 const Logout = () => {
-  const history = useHistory();
+  const [reload, setReload] = useState(false);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
@@ -22,8 +21,10 @@ const Logout = () => {
   };
   const handleLogout = () => {
     Cookies.remove("user");
-    history.push("/login");
+    setReload(true);
   };
+
+  reload && window.location.reload();
 
   //
   // get user connected infos from cookie
