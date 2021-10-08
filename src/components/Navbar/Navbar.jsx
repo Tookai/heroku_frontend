@@ -20,9 +20,20 @@ const Navbar = () => {
   const history = useHistory();
 
   //
+  // get user connected infos from cookie
+  const userOn = Cookies.get("user")
+    ? JSON.parse(Cookies.get("user"))
+    : {
+        userId: 0,
+        isAdmin: false,
+        token: "",
+      };
+  console.log(userOn);
+
+  //
   // Get current user Data
   const loggedUser = JSON.parse(localStorage.getItem("user"));
-  const { data, isLoading } = useQuery("logged-user", () => api.selectOneUser(loggedUser.userId));
+  const { data, isLoading } = useQuery("logged-user", () => api.selectOneUser(userOn.userId));
   //
   // Gsap Animation
   const roundedBtn = useRef();
@@ -88,7 +99,7 @@ const Navbar = () => {
       ) : (
         <div className="greeting">
           <p className="hello">Bonjour, {data ? data[0].firstName : "toi"}</p>
-          <Link to={`/user/${loggedUser ? loggedUser.userId : "0"}`} onClick={handleClick}>
+          <Link to={`/user/${userOn ? userOn.userId : "0"}`} onClick={handleClick}>
             {data ? <Avatar alt={`${data[0].firstName} Avatar`} src={data[0].avatar} /> : <Avatar alt="" src="" />}
           </Link>
         </div>
