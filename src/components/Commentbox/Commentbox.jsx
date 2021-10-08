@@ -17,7 +17,6 @@ const Commentbox = () => {
   const { mutate } = useMutation(api.createComment, {
     onSuccess: () => {
       queryClient.invalidateQueries(["comments", postId]);
-      queryClient.invalidateQueries("feed");
       queryClient.invalidateQueries("commentsNumber");
     },
   });

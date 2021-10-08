@@ -13,14 +13,12 @@ const Comment = ({ comment }) => {
 
   const loggedUser = JSON.parse(localStorage.getItem("user"));
   const id = comment.id;
-  const { data, isLoading, isError } = useQuery(["post-user", { id }], () => api.selectOneUser(comment.userId));
+  const { data: comm, isLoading, isError } = useQuery(["comment-user", { id }], () => api.selectOneUser(comment.userId));
 
   const queryClient = useQueryClient();
   const { mutate } = useMutation(api.deleteComment, {
     onSuccess: () => {
       queryClient.invalidateQueries("comments");
-      queryClient.invalidateQueries("feed");
-      queryClient.invalidateQueries("commentsNumber");
     },
   });
 
@@ -32,6 +30,9 @@ const Comment = ({ comment }) => {
     }
   };
 
+  console.log(comment);
+  console.log(comm, "from comment");
+
   return (
     <div className="Comment">
       <div className="infos">
@@ -39,11 +40,11 @@ const Comment = ({ comment }) => {
           <p>
             Posté par : {isLoading && "..."}
             {isError && "Utilisateur Supprimé"}
-            {data && (
+            {comm && (
               <Link to={`/user/${comment.userId}`}>
                 <em>
                   {" "}
-                  {data[0].firstName} {data[0].lastName}
+                  {comm[0].firstName} {comm[0].lastName}
                 </em>
               </Link>
             )}
