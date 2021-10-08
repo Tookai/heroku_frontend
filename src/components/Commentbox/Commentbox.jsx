@@ -26,6 +26,7 @@ const Commentbox = () => {
     const body = { postId, userId, content };
     if (content !== "") {
       mutate(body);
+      setContent("");
     } else {
       alert("Vous essayez de poster un commentaire vide.");
     }
@@ -49,6 +50,7 @@ const Commentbox = () => {
           id="content"
           multiline
           label="Laisser un commentaire : "
+          value={content}
           rows={4}
           variant="filled"
           style={{ backgroundColor: "white", border: "none", outline: "none", marginBottom: "0.3rem", minWidth: "300px" }}
