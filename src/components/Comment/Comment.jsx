@@ -29,6 +29,7 @@ const Comment = ({ comment }) => {
   const { mutate } = useMutation(api.deleteComment, {
     onSuccess: () => {
       queryClient.invalidateQueries("comments");
+      queryClient.invalidateQueries("commentsNumber");
     },
   });
 
