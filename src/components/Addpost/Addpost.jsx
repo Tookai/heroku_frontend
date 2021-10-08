@@ -7,6 +7,7 @@ import { useMutation, useQueryClient } from "react-query";
 import * as api from "../../apiCall";
 import { categories } from "../../resources.js";
 import gsap from "gsap";
+import Cookies from "js-cookie";
 
 const Addpost = () => {
   //
@@ -21,15 +22,25 @@ const Addpost = () => {
     setImage("");
     setOpen(false);
   };
-  
+
+  //
+  // get user connected infos from cookie
+  const userOn = Cookies.get("user")
+    ? JSON.parse(Cookies.get("user"))
+    : {
+        userId: 0,
+        isAdmin: false,
+        token: "",
+      };
+
   //
   // Get post data
   const [topic, setTopic] = useState("");
   const [desc, setDesc] = useState("");
   const [image, setImage] = useState("");
   const loggedUser = JSON.parse(localStorage.getItem("user"));
-  const userId = loggedUser.userId;
-  // const post = { topic, desc, image, userId };
+  const userId = userOn.userId;
+
   //
   // Update feed on submit
   const queryClient = useQueryClient();
@@ -45,8 +56,8 @@ const Addpost = () => {
   // Add a post
   const handleSubmit = () => {
     if ((desc !== "" || image !== "") && topic !== "") {
-        const post = { topic, desc, image, userId };
-        mutate(post);
+      const post = { topic, desc, image, userId };
+      mutate(post);
     } else {
       alert("Certains éléments devraient être remplis.");
     }

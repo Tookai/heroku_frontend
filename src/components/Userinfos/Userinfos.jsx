@@ -4,8 +4,19 @@ import { useQuery } from "react-query";
 import Updatepic from "../Updatepic/Updatepic";
 import Updateinfos from "../Updateinfos/Updateinfos";
 import Deluser from "../Deluser/Deluser";
+import Cookies from "js-cookie";
 
 const Userinfos = () => {
+  //
+  // get user connected infos from cookie
+  const userOn = Cookies.get("user")
+    ? JSON.parse(Cookies.get("user"))
+    : {
+        userId: 0,
+        isAdmin: false,
+        token: "",
+      };
+
   const loggedUser = JSON.parse(localStorage.getItem("user"));
   //
   const id = window.location.pathname.split("/user/")[1];
@@ -54,7 +65,7 @@ const Userinfos = () => {
           </div>
         </div>
       </div>
-      {parseInt(id) === loggedUser.userId && (
+      {parseInt(id) === userOn.userId && (
         <div className="update__btn">
           <Updatepic user={u} />
           <Updateinfos user={u} />

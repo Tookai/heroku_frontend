@@ -7,9 +7,20 @@ import * as api from "../../apiCall";
 import { Link } from "react-router-dom";
 import { IconButton } from "@material-ui/core";
 import ClearIcon from "@material-ui/icons/Clear";
+import Cookies from "js-cookie";
 
 const Comment = ({ comment }) => {
   timeago.register("fr", fr);
+
+  //
+  // get user connected infos from cookie
+  const userOn = Cookies.get("user")
+    ? JSON.parse(Cookies.get("user"))
+    : {
+        userId: 0,
+        isAdmin: false,
+        token: "",
+      };
 
   const loggedUser = JSON.parse(localStorage.getItem("user"));
   const id = comment.id;
@@ -54,7 +65,7 @@ const Comment = ({ comment }) => {
           </p>
         </div>
 
-        {(loggedUser.userId === comment.userId || loggedUser.isAdmin) && (
+        {(userOn.userId === comment.userId || userOn.isAdmin) && (
           <IconButton color="secondary" variant="contained">
             <ClearIcon fontSize="small" onClick={handleDelete} />
           </IconButton>

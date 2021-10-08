@@ -8,9 +8,20 @@ import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import Updatepost from "../Updatepost/Updatepost";
 import Likes from "../Likes/Likes";
+import Cookies from "js-cookie";
 
 const Post = ({ post }) => {
   timeago.register("fr", fr);
+  //
+  // get user connected infos from cookie
+  const userOn = Cookies.get("user")
+    ? JSON.parse(Cookies.get("user"))
+    : {
+        userId: 0,
+        isAdmin: false,
+        token: "",
+      };
+
   const loggedUser = JSON.parse(localStorage.getItem("user"));
   const id = post.id;
   const postId = id;
@@ -40,7 +51,7 @@ const Post = ({ post }) => {
             <TimeAgo datetime={`${post.createdAt}`} locale="fr" />
           </p>
         </div>
-        <div>{(post.userId === loggedUser.userId || loggedUser.isAdmin) && <Updatepost post={post} />}</div>
+        <div>{(post.userId === userOn.userId || userOn.isAdmin) && <Updatepost post={post} />}</div>
       </div>
 
       <hr />

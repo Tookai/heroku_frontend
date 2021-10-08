@@ -27,9 +27,19 @@ const Logout = () => {
   };
 
   //
+  // get user connected infos from cookie
+  const userOn = Cookies.get("user")
+    ? JSON.parse(Cookies.get("user"))
+    : {
+        userId: 0,
+        isAdmin: false,
+        token: "",
+      };
+
+  //
   // Get current user Data
   const loggedUser = JSON.parse(localStorage.getItem("user"));
-  const { data } = useQuery("logged-user", () => api.selectOneUser(loggedUser.userId));
+  const { data } = useQuery("logged-user", () => api.selectOneUser(userOn.userId));
 
   //
   // Gsap Animation

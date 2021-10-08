@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { Link } from "react-router-dom";
 import * as api from "../../apiCall";
 import "./Likes.scss";
+import Cookies from "js-cookie";
 
 const Likes = ({ post }) => {
   const [open, setOpen] = useState(false);
@@ -15,11 +16,21 @@ const Likes = ({ post }) => {
     setOpen(false);
   };
   //
+  // get user connected infos from cookie
+  const userOn = Cookies.get("user")
+    ? JSON.parse(Cookies.get("user"))
+    : {
+        userId: 0,
+        isAdmin: false,
+        token: "",
+      };
+
+  //
   //
   const { data, isLoading, isError } = useQuery(["likes", post.id], () => api.whoLiked(post.id));
   const loggedUser = JSON.parse(localStorage.getItem("user"));
-  const body = { postId: post.id, userId: parseInt(loggedUser.userId) };
-  const user = data?.find((id) => id.id === loggedUser.userId);
+  const body = { postId: post.id, userId: parseInt(userOn.userId) };
+  const user = data?.find((id) => id.id === userOn.userId);
 
   //
   //

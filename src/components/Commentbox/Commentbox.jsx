@@ -4,10 +4,21 @@ import Comment from "../Comment/Comment";
 import * as api from "../../apiCall";
 import "./Commentbox.scss";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 const Commentbox = () => {
+  //
+  // get user connected infos from cookie
+  const userOn = Cookies.get("user")
+    ? JSON.parse(Cookies.get("user"))
+    : {
+        userId: 0,
+        isAdmin: false,
+        token: "",
+      };
+
   const loggedUser = JSON.parse(localStorage.getItem("user"));
-  const userId = loggedUser.userId;
+  const userId = userOn.userId;
   const postId = window.location.pathname.split("/id/")[1];
   const { data, isLoading, isError } = useQuery(["comments", postId], () => api.selectCommentsByPost(postId));
 
