@@ -22,7 +22,6 @@ const Comment = ({ comment }) => {
         token: "",
       };
 
-  const loggedUser = JSON.parse(localStorage.getItem("user"));
   const id = comment.id;
   const { data: comm, isLoading, isError } = useQuery(["comment-user", { id }], () => api.selectOneUser(comment.userId));
 

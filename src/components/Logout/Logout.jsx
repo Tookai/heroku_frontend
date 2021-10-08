@@ -38,7 +38,6 @@ const Logout = () => {
 
   //
   // Get current user Data
-  const loggedUser = JSON.parse(localStorage.getItem("user"));
   const { data } = useQuery("logged-user", () => api.selectOneUser(userOn.userId));
 
   //

@@ -17,7 +17,6 @@ const Commentbox = () => {
         token: "",
       };
 
-  const loggedUser = JSON.parse(localStorage.getItem("user"));
   const userId = userOn.userId;
   const postId = window.location.pathname.split("/id/")[1];
   const { data, isLoading, isError } = useQuery(["comments", postId], () => api.selectCommentsByPost(postId));

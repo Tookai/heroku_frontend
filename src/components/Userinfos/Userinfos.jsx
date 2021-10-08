@@ -17,7 +17,6 @@ const Userinfos = () => {
         token: "",
       };
 
-  const loggedUser = JSON.parse(localStorage.getItem("user"));
   //
   const id = window.location.pathname.split("/user/")[1];
   const { data, isLoading } = useQuery(["profile-user", { id }], () => api.selectOneUser(id));

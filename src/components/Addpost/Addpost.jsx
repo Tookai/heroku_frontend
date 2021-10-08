@@ -38,7 +38,6 @@ const Addpost = () => {
   const [topic, setTopic] = useState("");
   const [desc, setDesc] = useState("");
   const [image, setImage] = useState("");
-  const loggedUser = JSON.parse(localStorage.getItem("user"));
   const userId = userOn.userId;
 
   //

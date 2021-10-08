@@ -28,7 +28,6 @@ const Likes = ({ post }) => {
   //
   //
   const { data, isLoading, isError } = useQuery(["likes", post.id], () => api.whoLiked(post.id));
-  const loggedUser = JSON.parse(localStorage.getItem("user"));
   const body = { postId: post.id, userId: parseInt(userOn.userId) };
   const user = data?.find((id) => id.id === userOn.userId);
 

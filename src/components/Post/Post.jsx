@@ -22,7 +22,6 @@ const Post = ({ post }) => {
         token: "",
       };
 
-  const loggedUser = JSON.parse(localStorage.getItem("user"));
   const id = post.id;
   const postId = id;
   const { data, isLoading, isError } = useQuery(["post-user", { id }], () => api.selectOneUser(post.userId));

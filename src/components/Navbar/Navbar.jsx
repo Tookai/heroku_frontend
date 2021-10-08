@@ -32,7 +32,6 @@ const Navbar = () => {
 
   //
   // Get current user Data
-  const loggedUser = JSON.parse(localStorage.getItem("user"));
   const { data, isLoading } = useQuery("logged-user", () => api.selectOneUser(userOn.userId));
   //
   // Gsap Animation
