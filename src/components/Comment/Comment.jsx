@@ -40,9 +40,6 @@ const Comment = ({ comment }) => {
     }
   };
 
-  console.log(comment);
-  console.log(comm, "from comment");
-
   return (
     <div className="Comment">
       <div className="infos">

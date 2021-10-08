@@ -28,7 +28,6 @@ const Navbar = () => {
         isAdmin: false,
         token: "",
       };
-  console.log(userOn);
 
   //
   // Get current user Data

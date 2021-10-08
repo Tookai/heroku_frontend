@@ -28,26 +28,14 @@ const Userinfos = () => {
   const u = data[0];
   return (
     <div className="Userinfos">
-      {u.cover ? (
-        <div className="cover">
-          <img src={u.cover} alt="" />
-        </div>
-      ) : (
-        <div className="cover">
-          <img src="https://picsum.photos/750/320" alt="Filler for cover" />
-        </div>
-      )}
+      <div className="cover">
+        <img src={u.cover} alt="" />
+      </div>
 
       <div className="infos">
-        {u.avatar ? (
-          <div className="profilePic">
-            <img src={u.avatar} alt="" />
-          </div>
-        ) : (
-          <div className="profilePic">
-            <img src="https://picsum.photos/150/150" alt="Filler for avatar" />
-          </div>
-        )}
+        <div className="profilePic">
+          <img src={u.avatar} alt="" />
+        </div>
 
         <div className="profileInfos">
           <div className="left">

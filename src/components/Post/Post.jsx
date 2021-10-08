@@ -27,9 +27,6 @@ const Post = ({ post }) => {
   const { data, isLoading, isError } = useQuery(["post-user", { id }], () => api.selectOneUser(post.userId));
   const { data: com } = useQuery(["commentsNumber", postId], () => api.selectCommentsByPost(postId));
 
-  console.log(post);
-  console.log(data, "from post");
-
   return (
     <div className="Post">
       <div className="top">

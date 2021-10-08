@@ -6,8 +6,6 @@ import * as api from "../../apiCall";
 import "./Updateinfos.scss";
 
 const Updateinfos = ({ user }) => {
-  console.log(user);
-
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
