@@ -16,7 +16,6 @@ const LoginPage = () => {
   const { mutate } = useMutation(api.loginUser, {
     onSuccess: (data) => {
       const user = { userId: data.user[0].id, isAdmin: data.user[0].isAdmin, token: data.token };
-      localStorage.setItem("user", JSON.stringify(user));
       Cookies.set("user", JSON.stringify(user), { expires: 0.125 });
       history.push("/");
     },

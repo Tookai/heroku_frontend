@@ -21,7 +21,6 @@ const Logout = () => {
     setOpen(false);
   };
   const handleLogout = () => {
-    localStorage.clear();
     Cookies.remove("user");
     history.push("/login");
   };

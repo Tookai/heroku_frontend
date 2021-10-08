@@ -23,7 +23,6 @@ const Deluser = ({ user }) => {
   const id = parseInt(user.id);
   const { mutate } = useMutation(api.deleteUser, {
     onSuccess: () => {
-      localStorage.clear();
       Cookies.remove("user");
       history.push("/register");
     },
