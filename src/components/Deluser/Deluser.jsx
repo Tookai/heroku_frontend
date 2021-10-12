@@ -9,6 +9,8 @@ import Cookies from "js-cookie";
 
 const Deluser = ({ user }) => {
   const [open, setOpen] = useState(false);
+  const [reload, setReload] = useState(false);
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -24,9 +26,11 @@ const Deluser = ({ user }) => {
   const { mutate } = useMutation(api.deleteUser, {
     onSuccess: () => {
       Cookies.remove("user");
-      history.push("/register");
+      setReload(true);
     },
   });
+
+  reload && window.location.reload();
 
   //
   const handleSubmit = () => {

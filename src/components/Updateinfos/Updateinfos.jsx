@@ -68,40 +68,19 @@ const Updateinfos = ({ user }) => {
           <form>
             <div className="col">
               <label htmlFor="firstName">Prénom :</label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                placeholder="Prénom"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
+              <input type="text" id="firstName" name="firstName" placeholder="Prénom" onChange={(e) => setFirstName(e.target.value)} />
 
               <label htmlFor="lastName">Nom :</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                placeholder="Nom de famille"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
+              <input type="text" id="lastName" name="lastName" placeholder="Nom de famille" onChange={(e) => setLastName(e.target.value)} />
               <label htmlFor="birthday">Date de naissance :</label>
-              <input
-                type="text"
-                id="birthday"
-                name="birthday"
-                placeholder="JJ/MM/AAAA"
-                value={birthday}
-                onChange={(e) => setBirthday(e.target.value)}
-              />
+              <input type="text" id="birthday" name="birthday" placeholder="JJ/MM/AAAA" onChange={(e) => setBirthday(e.target.value)} />
 
               <label htmlFor="job">Métier :</label>
-              <input type="text" id="job" name="job" placeholder="Métier" value={job} onChange={(e) => setJob(e.target.value)} />
+              <input type="text" id="job" name="job" placeholder="Métier" onChange={(e) => setJob(e.target.value)} />
             </div>
             <div className="col">
               <label htmlFor="city">Ville :</label>
-              <input type="text" id="city" name="city" placeholder="Ville" value={city} onChange={(e) => setCity(e.target.value)} />
+              <input type="text" id="city" name="city" placeholder="Ville" onChange={(e) => setCity(e.target.value)} />
 
               <label htmlFor="fromCity">Origine :</label>
               <input
@@ -109,7 +88,6 @@ const Updateinfos = ({ user }) => {
                 id="fromCity"
                 name="fromCity"
                 placeholder="Ville d'origine"
-                value={fromCity}
                 onChange={(e) => setFromCity(e.target.value)}
               />
               <label htmlFor="scholarship">Scolarité :</label>
@@ -118,7 +96,6 @@ const Updateinfos = ({ user }) => {
                 id="scholarship"
                 name="scholarship"
                 placeholder="Où avez vous étudiez ?"
-                value={scholarship}
                 onChange={(e) => setScholarship(e.target.value)}
               />
 
@@ -128,7 +105,6 @@ const Updateinfos = ({ user }) => {
                 id="relationship"
                 name="relationship"
                 placeholder="Votre situation"
-                value={relationship}
                 onChange={(e) => setRelationship(e.target.value)}
               />
             </div>
