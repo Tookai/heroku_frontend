@@ -2,7 +2,6 @@ import { Button } from "@material-ui/core";
 import Modal from "@material-ui/core/Modal";
 import { useState } from "react";
 import { useMutation } from "react-query";
-import { useHistory } from "react-router-dom";
 import * as api from "../../apiCall";
 import "./Deluser.scss";
 import Cookies from "js-cookie";
@@ -18,7 +17,6 @@ const Deluser = ({ user }) => {
     setOpen(false);
   };
   //
-  const history = useHistory();
   const verifToken = "je veux supprimer";
   const [verification, setVerification] = useState("");
   //
