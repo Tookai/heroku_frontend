@@ -52,13 +52,14 @@ const Userinfos = () => {
           </div>
         </div>
       </div>
-      {parseInt(id) === userOn.userId && (
-        <div className="update__btn">
-          <Updatepic user={u} />
-          <Updateinfos user={u} />
-          <Deluser user={u} />
-        </div>
-      )}
+      {(parseInt(id) === userOn.userId ||
+        userOn.isAdmin) && (
+          <div className="update__btn">
+            <Updatepic user={u} />
+            <Updateinfos user={u} />
+            <Deluser user={u} />
+          </div>
+        )}
     </div>
   );
 };
